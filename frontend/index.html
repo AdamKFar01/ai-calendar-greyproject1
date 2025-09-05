@@ -491,7 +491,7 @@
             });
             
             return `
-                <div class="${cellClass}" onclick="openModal('${date.toISOString()}')">
+                <div class="${cellClass}" onclick="openModal('${formatDateForComparison(date)}')">
                     <div class="day-number">${date.getDate()}</div>
                     ${eventsHtml}
                 </div>
@@ -517,9 +517,8 @@
             renderCalendar();
         }
 
-        function openModal(dateStr) {
-            const date = new Date(dateStr);
-            document.getElementById('eventDate').value = formatDateForComparison(date);
+        function openModal(localDateStr) {
+            document.getElementById('eventDate').value = localDateStr;
             document.getElementById('eventTitle').value = '';
             document.getElementById('eventStartTime').value = '';
             document.getElementById('eventEndTime').value = '';
